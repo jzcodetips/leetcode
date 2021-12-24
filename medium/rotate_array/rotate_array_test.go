@@ -1,4 +1,4 @@
-package moveindex
+package main
 
 import (
 	"testing"
@@ -25,13 +25,25 @@ func TestSolution(t *testing.T) {
 			aInput: []int{1, 2, 3, 4, 5, 6, 7, 8},
 			wanted: []int{4, 5, 6, 7, 8, 1, 2, 3},
 		},
+		{
+			label:  "with k > len(a) and k = 3",
+			kInput: 3,
+			aInput: []int{1, 2},
+			wanted: []int{2, 1},
+		},
+		{
+			label:  "with k > len(a) and k = 5",
+			kInput: 5,
+			aInput: []int{1, 2},
+			wanted: []int{2, 1},
+		},
 	}
 
 	for _, test := range tests {
 		t.Run(test.label, func(t *testing.T) {
 			t.Logf("aInput %v", test.aInput)
 
-			Solution(test.aInput, test.kInput)
+			rotate(test.aInput, test.kInput)
 
 			t.Logf("wanted %v", test.wanted)
 
