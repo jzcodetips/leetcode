@@ -1,3 +1,5 @@
+use std::cmp;
+
 fn main() {
     let k = 3;
     let arr = vec![1, 2, 3, 4, 5, 6];
@@ -14,10 +16,7 @@ fn find_max_sub_array(k: usize, arr: &Vec<i64>) -> i64 {
         curr_max += arr[i];
 
         if i >= k - 1 {
-            if curr_max > max {
-                max = curr_max
-            }
-
+            max = cmp::max(max, curr_max);
             curr_max -= arr[start];
             start += 1;
         }
